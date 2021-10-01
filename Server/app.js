@@ -1,5 +1,6 @@
 const express = require('express');
 const morgan = require('morgan');
+const cors = require('cors');
 const helmet = require('helmet');
 const path = require('path');
 const routes = require('./routes');
@@ -13,6 +14,7 @@ app.use(morgan('dev'));
 
 app.use(express.static(path.join(__dirname, '/public')));
 app.use(helmet());
+app.use(cors());
 
 app.use(express.json());
 
