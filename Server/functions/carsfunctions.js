@@ -14,6 +14,13 @@ function changeStatus(carId, newCarStatus) {
   return `Car status changed to ${newCarStatus}`;
 }
 
+function patchCar(carId, params) {
+  const car = cars.find((el) => el.id === Number(carId));
+  car.status = params.status;
+  car.title = params.title;
+  return car;
+}
+
 function delCar(carId) {
   cars.splice(cars.map((el) => el.id).indexOf(parseInt(carId, 10)), 1);
   return 'Car deleted';
@@ -27,4 +34,4 @@ function insertCar(e) {
   return 'Created car';
 }
 
-module.exports = { getCars, getCar, changeStatus, delCar, insertCar };
+module.exports = { getCars, getCar, changeStatus, delCar, insertCar, patchCar };

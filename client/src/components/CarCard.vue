@@ -20,13 +20,14 @@
       </span>
       <br />
       <br />
-      <p>
+      <p v-if="car.status === 'available'">
         Price: <strong>{{ car.price }}</strong>
       </p>
+      <p v-else>Price: <strong>N/A</strong></p>
     </div>
-    <v-card-actions>
+    <v-card-actions v-if="car.status === 'available'">
       <v-spacer></v-spacer>
-      <v-btn color="white" class="purple" text @click="$emit('buycar', car)">
+      <v-btn color="white" class="purple" text :to="{ name: 'Details', params: { id: car.id } }">
         Details
       </v-btn>
     </v-card-actions>
@@ -39,6 +40,8 @@ export default {
   props: {
     car: Object,
   },
+  methods: {},
+
   created() {},
 };
 </script>

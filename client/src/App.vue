@@ -2,7 +2,7 @@
   <v-app>
     <LogoBar></LogoBar>
     <v-main>
-      <router-view :cars="cars"></router-view>
+      <router-view :cars="cars" @refresh="getCars()"></router-view>
     </v-main>
   </v-app>
 </template>
@@ -18,6 +18,7 @@ export default {
   }),
   methods: {
     async getCars() {
+      console.log('Get Cars');
       try {
         const { data } = await axios({
           url: `http://127.0.0.1:3000/cars`,
